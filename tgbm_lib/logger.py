@@ -13,28 +13,8 @@ class Logger:
     def parse_data(self,  bot_id: int,
                    message: types.Message,
                    parse_text) -> dict:
-        data = {
-            'is_command': message.is_command(),
-            'bot_id': bot_id,
-            'datetime': datetime.utcnow(),
-            'message_type': 'command' if message.is_command() else 'text',
-            'user_id': message.from_user.id
-        }
-
-        if message.content_type == types.ContentType.TEXT:
-            data.update({
-                'text': message.text
-                if message.is_command() or parse_text
-                else None
-            })
-        elif message.content_type == types.ContentType.PHOTO and parse_text:
-            data.update({
-                'text': message.caption
-                if message.caption
-                else None
-            })
-        print(data)
-        return data
+        # ...
+        return message
 
     async def write_logs(self, bot_id: int,
                          message: types.Message,
